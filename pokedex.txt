@@ -1,0 +1,5 @@
+#################
+Name: Squirtle
+ID: 7
+Main type: Water
+#################

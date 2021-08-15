@@ -10,7 +10,7 @@ fn main() {
     let mut pokedex = Pokedex::new();
 
     loop {
-      println!("What you wanna do? \n1. Add Pokemon\n2. View all pokemons\n3. Remove Pokemon\n4. Quit");
+      println!("What you wanna do? \n1. Add Pokemon\n2. View all pokemons\n3. Remove Pokemon\n4. Export pokedex to a txt file\n5. Quit");
 
       let mut choice = String::new();
       io::stdin().read_line(&mut choice).expect("Failed to read message");
@@ -28,7 +28,9 @@ fn main() {
       } else if choice == 3 {
         pokedex.remove_pokemon();
       } else if choice == 4 {
-        break;
+        pokedex.write_pokedex_file();
+      } else if choice == 5 {
+        break
       } else {
         break;
       }

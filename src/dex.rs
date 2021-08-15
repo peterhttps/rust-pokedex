@@ -1,4 +1,6 @@
 use std::io;
+use std::fs::File;
+use std::io::Write;
 use colored::*;
 
 #[derive(Debug, Clone)]
@@ -64,7 +66,6 @@ impl Pokedex {
   }
 
   pub fn print_pokedex(&self) {
-
     for pokemon in self.list.iter() {
       println!("#################");
       println!("Name: {}", pokemon.name.green());
@@ -73,6 +74,25 @@ impl Pokedex {
       println!("#################");
       println!();
     }
+  }
 
+  pub fn write_pokedex_file(&self) {
+    let mut pokedex_str = String::new();
+
+    for pokemon in self.list.iter() {
+      let pokemon_str: String = format!("#################\nName: {}\nID: {}\nMain type: {}\n#################\n", 
+                                         pokemon.name, 
+                                         pokemon.id.to_string(), 
+                                         pokemon.main_type);
+
+      pokedex_str.push_str(&pokemon_str);
+    }
+
+    let mut file = File::create("pokedex.txt").expect("Unable to create a file");
+    file.write_all(pokedex_str.as_bytes()).expect("Unable to write");
+
+
+    println!("{}", "Pokedex exported!".blue());
+    println!();
   }
 }
