@@ -1,6 +1,7 @@
 <h1 align="center">Rust Pokédex</h1>
 
 A tiny Pokédex made with rust to studie `struct`, `impl` and `mod`
+
 You can add Pokémons, list and remove by id
 
 ## Footage
