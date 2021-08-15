@@ -47,6 +47,22 @@ impl Pokedex {
     println!();
   }
 
+  pub fn remove_pokemon(&mut self) {
+    println!("Remove a pokemon");
+
+    let mut pokemon_id = String::new();
+    println!("Type the pokemon id to remove: ");
+    io::stdin().read_line(&mut pokemon_id).expect("Failed to read message");
+    let pokemon_id = match pokemon_id.trim().parse() {
+      Ok(num) => num,
+      Err(_) => 0
+    };
+
+    self.list.retain(|x| x.id != pokemon_id);
+    println!();
+
+  }
+
   pub fn print_pokedex(&self) {
 
     for pokemon in self.list.iter() {
